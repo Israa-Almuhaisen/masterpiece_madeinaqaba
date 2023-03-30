@@ -1,0 +1,23 @@
+.fa-bars:before {
+            content: "\f0c9";
+        }
+        .btn-primary {
+            background-color: #4b053f;
+            border-color: #4b053f;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 250px;
+            height: 100vh;
+            overflow-y: auto;
+            transition: 0.5s;
+            z-index: 999;        }
+        input {
+            background-color: #fff !important;
+        }
+        .bg-secondary {
+            background-color:  #4b053f !important;
+        }
