@@ -51,11 +51,13 @@ if(isset($_POST['submit'])){
    <!-- custom css file link  -->
    <!-- <link rel="stylesheet" href="css/style.css"> -->
    <style>
-   <?php 
+<?php 
 include("css/style.css");
-
+include("css/style_israa.css");
+include("css/style_productFilters.css");
 ?>
 </style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 </head>
 <body>

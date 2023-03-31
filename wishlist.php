@@ -1,5 +1,59 @@
-<?php 
-include("components/sessionInclude.php");
+<?php
+
+include 'components/connect.php';
+
+session_start();
+
+if(isset($_SESSION['user_id'])){
+   $user_id = $_SESSION['user_id'];
+}else{
+   $user_id = '';
+   header('location:user_login.php');
+};
+
+
+if(isset($_POST['delete'])){
+   $wishlist_id = $_POST['id'];
+   $delete_wishlist_item = $conn->prepare("DELETE FROM `favorite` WHERE id = ?");
+   $delete_wishlist_item->execute([$wishlist_id]);
+}
+
+if(isset($_GET['delete_all'])){
+   $delete_wishlist_item = $conn->prepare("DELETE FROM `favorite` WHERE user_id = ?");
+   $delete_wishlist_item->execute([$user_id]);
+   header('location:wishlist.php');
+}
+
+
+
+if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['addTOcart'])){
+   $product_id = $_POST['product_id'];
+   $product_name = $_POST['name'];
+   $product_price = $_POST['price'];
+   $product_image = $_POST['image'];
+   $product_quantity = $_POST['quantity'];
+
+   $check_product_id = $conn->prepare("SELECT product_id FROM `cart` WHERE user_id = '$user_id'");
+   $check_product_id->execute();
+   
+
+   $flag = true;
+
+   while($fetch_product = $check_product_id->fetch(PDO::FETCH_ASSOC)){
+      if (in_array($product_id, $fetch_product)){
+         $flag = false;
+         break;
+      }
+   };
+   if($flag==true){
+      $send_to_cart = $conn->prepare("INSERT INTO `cart` (user_id , product_id , name , price , image , quantity)
+                                    VALUES (? , ? , ? , ?, ? , ?)"); 
+      $send_to_cart->execute([$user_id , $product_id , $product_name , $product_price, $product_image, $product_quantity]);
+   }
+}
+
+
+
 ?>
 
 <!DOCTYPE html>
