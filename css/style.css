@@ -84,12 +84,34 @@ section{
 }
 
 .btn:hover{
-   background-color:#67022f;
-   color: var(--white);
+   border-radius: 29.5px;
+   background: #d91515;
+   border-color: #d91515;
+   color: #e0c1c1d0!important;
+   box-shadow: none;
+   outline:none;
 }
 /* --main-color #2980b9   #8d082f*/
 .btn{
-   background-color:  rgb(0, 0, 69) !important;
+   margin-top: 10px!important;
+      border-radius: 30px!important;
+      padding: 13px 22px!important;
+      font-size: 20px!important;
+      background-color: #f22323 !important;
+      border-color: #f22323;
+      color: #ffffff;
+      box-shadow: 1px 3px 3px #828181;
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      color: #fff;
+      box-shadow: 1px 3px 3px #828181;
+
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  color: #fff;
+    
 
   
 }
@@ -163,9 +185,11 @@ section{
 .header{
    position: sticky;
    top:0; left:0; right:0;
-   background-color:rgb(101, 11, 165) !important;
+   /* background-color:rgb(101, 11, 165) !important; */
+   background-color:#391644 !important;
    box-shadow: black;
-   z-index: 1000;
+   z-index: 
+   1000;
    
 }
 
@@ -183,8 +207,8 @@ section{
 
 
 .header .flex .logo img{
-    height:60px;
-    width: 60px; 
+    height:80px;
+    width: 90px; 
     margin-bottom:-20px;
     margin-top:-15px;
     margin-left: -40px;
@@ -195,10 +219,14 @@ section{
    color:var(--main-color);
 }
 
+.header .flex .navbar{
+margin-top: 15px;
+margin-bottom: -10px;
+}
 
 .header .flex .navbar a{
-   margin:0 1rem;
-   font-size: 2rem;
+   margin:0 1rem ;
+   font-size: 2.1rem;
    color:var(--white);
 }
 
@@ -212,7 +240,7 @@ section{
    margin-left: 1rem;
    font-size: 1.7rem;
    cursor: pointer;
-   color:#C3ADBD;
+   color:#dcced8;
 }
 
 .header .flex .icons > *:hover{
@@ -1011,7 +1039,7 @@ element.style {
       top:99%; left:0; right:0;
       border-top: var(--border);
       border-bottom: var(--border);
-      background-color: var(--white);
+      background-color: rgb(57, 22, 68);
       transition: .2s linear;
       clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
    }

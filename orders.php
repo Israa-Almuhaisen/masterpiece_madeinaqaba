@@ -29,7 +29,7 @@ if(isset($_SESSION['user_id'])){
 <?php 
 include("css/style.css");
 include("css/style_israa.css");
-include("css/style_productFilters.css");
+// include("css/style_productFilters.css");
 ?>
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -81,7 +81,7 @@ include("css/style_productFilters.css");
                <?php } } } } } ?>
       <p> Total Products : <span><?= $fetch_orders['total_quantity']; ?></span> </p>
       <p> Total Price : <span>$<?= $fetch_orders['total_price']; ?></span> </p>
-      <p> Order Time : <span>$<?= $fetch_orders['order_time']; ?></span> </p>
+      <p> Order Time : <span><?= $fetch_orders['order_time']; ?></span> </p>
    </div>
    <?php
       } 

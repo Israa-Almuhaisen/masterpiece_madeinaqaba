@@ -13,21 +13,21 @@ if(isset($_SESSION['user_id'])){
 if(isset($_POST['submit'])){
 
    $name = $_POST['name'];
-   $name = filter_var($name, FILTER_SANITIZE_STRING);
+   // $name = filter_var($name, FILTER_SANITIZE_STRING);
    $email = $_POST['email'];
-   $email = filter_var($email, FILTER_SANITIZE_STRING);
+   // $email = filter_var($email, FILTER_SANITIZE_STRING);
 
    $update_profile = $conn->prepare("UPDATE `users` SET name = ?, email = ? WHERE user_id = ?");
    $update_profile->execute([$name, $email, $user_id]);
 
    $empty_pass = 'da39a3ee5e6b4b0d3255bfef95601890afd80709';
    $prev_pass = $_POST['prev_pass'];
-   $old_pass = sha1($_POST['old_pass']);
-   $old_pass = filter_var($old_pass, FILTER_SANITIZE_STRING);
-   $new_pass = sha1($_POST['new_pass']);
-   $new_pass = filter_var($new_pass, FILTER_SANITIZE_STRING);
-   $cpass = sha1($_POST['cpass']);
-   $cpass = filter_var($cpass, FILTER_SANITIZE_STRING);
+   $old_pass = $_POST['old_pass'];
+   // $old_pass = filter_var($old_pass, FILTER_SANITIZE_STRING);
+   $new_pass = $_POST['new_pass'];
+   // $new_pass = filter_var($new_pass, FILTER_SANITIZE_STRING);
+   $cpass = $_POST['cpass'];
+   // $cpass = filter_var($cpass, FILTER_SANITIZE_STRING);
 
    if($old_pass == $empty_pass){
       $message[] = 'please enter old password!';
@@ -55,7 +55,7 @@ if(isset($_POST['submit'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>register</title>
+   <title>Update Profile</title>
    
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
@@ -63,18 +63,32 @@ if(isset($_POST['submit'])){
 
    <!-- custom css file link  -->
    <!-- <link rel="stylesheet" href="css/style.css"> -->
-   <style>
-   <?php 
+   <style> 
+<?php 
 include("css/style.css");
-
+include("css/style_israa.css");
+include("css/style_productFilters.css");
 ?>
 </style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 </head>
 <body>
+<?php include 'components/user_header.php'; ?>
 
 
-   
+<?php
+
+$sql = $conn->prepare('SELECT * FROM users WHERE user_id = :id');
+$sql->bindValue(':id', $_SESSION['user_id'], PDO::PARAM_INT);
+$sql->execute();
+$fetch_profile = $sql->fetch(PDO::FETCH_ASSOC);
+
+?>
+
+
+
+
 
 <section class="form-container">
 

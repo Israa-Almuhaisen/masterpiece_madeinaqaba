@@ -8,7 +8,7 @@ if(isset($_SESSION['user_id'])){
    $user_id = $_SESSION['user_id'];
 }else{
    $user_id = '';
-   header('location:user_login.php');
+   header('location:login.php');
 };
 
 if(isset($_POST['delete'])){
@@ -47,7 +47,7 @@ if(isset($_POST['update_qty'])){
 <?php 
 include("css/style.css");
 include("css/style_israa.css");
-include("css/style_productFilters.css");
+// include("css/style_productFilters.css");
 ?>
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">

@@ -14,7 +14,7 @@ if(isset($_POST['submit'])){
 
    $email = $_POST['email'];
    $email =  htmlspecialchars($email, ENT_QUOTES);
-   $pass = sha1($_POST['pass']);
+   $pass = $_POST['pass'];
    $pass = htmlspecialchars($pass, ENT_QUOTES);
 
 

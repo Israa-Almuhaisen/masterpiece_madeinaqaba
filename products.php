@@ -137,6 +137,34 @@ include("css/style_productFilters.css");
 		<div class="row">
 		<div class="col-md-12">
 
+		<div class="product-filters">
+        <ul>
+            <li <?php if (!isset($_GET['cat_id']) || $_GET['cat_id'] == '*') { echo 'class="active"'; } ?> data-filter="*">All</li>
+            <?php
+                $sql = "SELECT * FROM category WHERE is_deleted=0";
+                $select_categories= $conn->query($sql);
+                foreach($select_categories as $fetch_category){
+                    $category_id = $fetch_category['category_id'];
+                    $category_name = $fetch_category['category_name'];
+                    $active_class = (isset($_GET['cat_id']) && $_GET['cat_id'] == $category_id) ? 'class="active"': '';
+            ?>										
+            <li <?= $active_class; ?> data-filter=".<?= $category_id; ?>"
+                <?php if ($active_class) { echo 'onclick="setIsotopeFilter(\'.' . $category_id . '\')"'; } ?>>
+                <?= $category_name; ?>
+            </li>
+            <?php
+                }
+            ?>
+        </ul>
+    </div>
+</div>
+
+<script>
+function setIsotopeFilter(filter) {
+    // Set the isotope filter
+    $(".product-lists").isotope({ filter: filter });
+}
+</script>
 
 </div>
 
@@ -262,24 +290,23 @@ include("css/style_productFilters.css");
 	<script src="js2/main.js"></script>
 
 <script>
-	       // projects filters isotop
-		//    $(".product-filters li").on('click', function () {
+	    //    projects filters isotop
+		   $(".product-filters li").on('click', function () {
             
-        //     $(".product-filters li").removeClass("active");
-        //     $(this).addClass("active");
+            $(".product-filters li").removeClass("active");
+            $(this).addClass("active");
 
-            // var selector = $3.attr('data-filter');
+            var selector = $(this).attr('data-filter');
 
-            // $(".product-lists").isotope({
-            //     filter: selector,
-            // });
+            $(".product-lists").isotope({
+                filter: selector
+            });
             
-        // });
+        });
 
-
+    setIsotopeFilter('<?php echo '.' . $_GET['cat_id']; ?>');
 
 </script>
-
 
 
 </body>

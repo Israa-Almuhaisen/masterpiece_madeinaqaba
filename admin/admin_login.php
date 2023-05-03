@@ -101,7 +101,7 @@ if(isset($_POST['name']) && isset($_POST['pass'])){
         <div class="container-fluid">
 
             <div style="position: absolute;">
-                <img src="../images/madein.png" width="250px" height="250px" style="border-radius: 50%; float: left; margin-left: 200px; margin-top: 200px;">
+                <img src="../images/madein.png" width="250px" height="250px" style="border-radius: 30%; float: left; margin-left: 200px; margin-top: 200px;">
                 <p style="margin-left: 80px; color:#5d0287; font-size: 60px; font-weight: bold; margin-top: 460px;">Made In Aqaba</p>
             </div>
             

@@ -16,9 +16,9 @@ if(isset($_POST['submit'])){
    $name = htmlspecialchars($name, ENT_QUOTES);
    $email = $_POST['email'];
    $email = htmlspecialchars($email, ENT_QUOTES);
-   $pass = sha1($_POST['pass']);
+   $pass = $_POST['pass'];
    $pass =htmlspecialchars($pass, ENT_QUOTES);
-   $cpass = sha1($_POST['cpass']);
+   $cpass = $_POST['cpass'];
    $cpass = htmlspecialchars($cpass, ENT_QUOTES);
    $mobile = $_POST['mobile'];
 

@@ -13,7 +13,7 @@ include("components/sessionInclude.php");
    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-   <link rel="icon" type="image/x-icon" href="./images/madein.png">
+   <link rel="icon" type="image/x-icon" href="./images/madein.png" >
 
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 

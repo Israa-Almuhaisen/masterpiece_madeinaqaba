@@ -21,7 +21,7 @@
 
       <nav class="navbar">
          <a href="home.php">Home</a>
-         <a href="products.php">Products</a>
+         <a href="products.php?cat_id=*">Products</a>
          <a href="sale.php">Sale</a>
          <a href="about.php">About</a>
          <a href="contact.php">Contact</a>
@@ -51,7 +51,7 @@
             <?php }; ?>
          
          <div id="user-btn" class="fas fa-user"></div>
-         <!-- <span id="nameeeeeee" style="cursor:default;"> <?php if(!empty($_SESSION['email'])){  echo strtoupper($_SESSION['name']);}  ?></span> -->
+         <span id="nameeeeeee" style="cursor:default;"> <?php if(!empty($_SESSION['email'])){  echo strtoupper($_SESSION['name']);}  ?></span>
 
       <div class="profile">
          <?php          
@@ -65,14 +65,15 @@
          <div class="flex-btn">
             
          </div>
-         <a href="components/user_logout.php" class="delete-btn" onclick="return confirm('logout from the website?');">logout</a> 
+         <!-- <a href="components/user_logout.php" class="delete-btn" onclick="return confirm('logout from the website?');">logout</a>  -->
+         <a href="components/user_logout.php" class="delete-btn">logout</a> 
          <?php
             }else{
          ?>
          <p>please login or register first!</p>
          <div class="flex-btn">
-            <a href="user_register.php" class="option-btn">register</a>
-            <a href="user_login.php" class="option-btn">login</a>
+            <a href="login.php?register=1" class="option-btn">register</a>
+            <a href="login.php" class="option-btn">login</a>
          </div>
          <?php
             }
