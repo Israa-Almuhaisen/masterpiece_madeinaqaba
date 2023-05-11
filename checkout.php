@@ -156,11 +156,11 @@ include("css/style_productFilters.css");
          </div>
          <div class="inputBox">
             <span>City :</span>
-            <input type="text" name="city" placeholder="e.g. mumbai" class="box" maxlength="50" required>
+            <input type="text" name="city" placeholder="e.g. Aqaba" class="box" maxlength="50" required>
          </div>
          <div class="inputBox">
             <span>Country :</span>
-            <input type="text" name="country" placeholder="e.g. India" class="box" maxlength="50" required>
+            <input type="text" name="country" placeholder="e.g. Jordan" class="box" maxlength="50" required>
          </div>
       </div>
       <input type="hidden" name="quantity" value="<?= $total_quantity ?>">

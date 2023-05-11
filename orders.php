@@ -1,3 +1,5 @@
+<!-- SELECT * FROM ((`order_details` inner JOIN products ON order_details.product_id=products.product_id) INNER JOIN orders on orders.order_id = order_details.order_id) WHERE user_id=22 -->
+
 <?php
 
 include 'components/connect.php';

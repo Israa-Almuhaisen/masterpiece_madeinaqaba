@@ -12,7 +12,12 @@ if(isset($_SESSION['user_id'])){
 
 
 if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['addTOcart'])){
-   $product_id = $_POST['product_id'];
+
+	if($user_id == ''){
+		$message[] = 'Your are <span style="color:red">NOT </span> logged in!';	
+	   }
+	   else{
+	   $product_id = $_POST['product_id'];
    $product_name = $_POST['name'];
    $product_price = $_POST['price'];
    $product_image = $_POST['image'];
@@ -44,29 +49,31 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['addTOcart'])){
       // echo'</pre>';
    }
 }
+else{$message[] = 'Your Product <span style="color:red">Already</span> Added To Cart!';}
+}
 }
 
 
 if(isset($_POST['add_to_wishlist'])){
 
    if($user_id == ''){
+	$message[] = 'Your are <span style="color:red">NOT </span> logged in!';
+    //   $flag = true;
+    //   $pid = $_POST['product_id'];
 
-      $flag = true;
-      $pid = $_POST['product_id'];
-
-      foreach($_SESSION['fav'] as $id){
-         if (in_array($pid,$id)){
-            $flag = false;
-            break;
-         }
-      };
-      if($flag==true){
-         $array_fav = [$pid];
-         array_push($_SESSION['fav'], $array_fav);
+    //   foreach($_SESSION['fav'] as $id){
+    //      if (in_array($pid,$id)){
+    //         $flag = false;
+    //         break;
+    //      }
+    //   };
+    //   if($flag==true){
+    //      $array_fav = [$pid];
+    //      array_push($_SESSION['fav'], $array_fav);
          // echo'<pre>';
          // print_r($_SESSION['fav']);
          // echo'</pre>';
-      }
+    //   }
 
    }else{
 

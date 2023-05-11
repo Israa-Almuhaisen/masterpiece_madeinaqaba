@@ -818,7 +818,7 @@ margin-bottom: -10px;
    cursor: pointer;
 }
 
-element.style {
+.element.style {
     background-color: rgb(0, 0, 69) !important;;
     font-size: 20px;
 }

@@ -10,8 +10,12 @@ if(isset($_SESSION['user_id'])){
    $user_id = '';
 };
 
-
 if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['addTOcart'])){
+
+   if($user_id == ''){
+      $message[] = 'Your are <span style="color:red">NOT </span> logged in!';
+   }else{
+
    $product_id = $_POST['product_id'];
    $product_name = $_POST['name'];
    $product_price = $_POST['price'];
@@ -43,35 +47,33 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['addTOcart'])){
       // print_r($_SESSION['cart']);
       // echo'</pre>';
    }
+}else{$message[] = 'Your Product <span style="color:red">Already</span> Added To Cart!';}
 }
 }
-
-
-
-
 
 
 
 if(isset($_POST['add_to_wishlist'])){
 
    if($user_id == ''){
+      $message[] = 'Your are <span style="color:red">NOT </span> logged in!';
 
-      $flag = true;
-      $pid = $_POST['product_id'];
+      // $flag = true;
+      // $pid = $_POST['product_id'];
 
-      foreach($_SESSION['fav'] as $id){
-         if (in_array($pid,$id)){
-            $flag = false;
-            break;
-         }
-      };
-      if($flag==true){
-         $array_fav = [$pid];
-         array_push($_SESSION['fav'], $array_fav);
+      // foreach($_SESSION['fav'] as $id){
+      //    if (in_array($pid,$id)){
+      //       $flag = false;
+      //       break;
+      //    }
+      // };
+      // if($flag==true){
+      //    $array_fav = [$pid];
+      //    array_push($_SESSION['fav'], $array_fav);
          // echo'<pre>';
          // print_r($_SESSION['fav']);
          // echo'</pre>';
-      }
+      // }
 
    }else{
 
@@ -194,7 +196,7 @@ include("css/style_productFilters.css");
 
 <section class="quick-view">
 
-   <h1 class="heading">Review for products</h1>
+   <h1 class="heading">Product Comments</h1>
 
 
 
@@ -208,7 +210,7 @@ include("css/style_productFilters.css");
                 $stmt = $conn->prepare($query);
                 $stmt->execute([$pid]); ?>
 
-                  <section style="background-color:rgb(0, 0, 69) !important;">
+                  <section style="background-color:rgb(0, 0, 69) ;">
 
   <div class="container my-5 py-5">
     <div class="row d-flex justify-content-center">
@@ -227,7 +229,7 @@ include("css/style_productFilters.css");
             <div class="card-body p-4">
             <div class="d-flex flex-start">
               <div>
-                <h6 class="fw-bold mb-1" style="font-size: 26px;"><?php echo $user_name ?></h6>
+                <h6 class="fw-bold mb-1" style="font-size: 14px;"><?php echo $user_name ?></h6>
                 <div class="d-flex align-items-center mb-3">
                   <p class="mb-0" style="font-size: 12px;">
                   <?php echo $comment_date ?>
@@ -236,11 +238,12 @@ include("css/style_productFilters.css");
                 <p class="mb-0" style="font-size: 20px;">
                 <?php echo  $comment_content; ?>
                 </p>
+            
               </div>
             </div>
           </div>
 
-          <hr class="my-0" /><?php } ?>
+          <hr class="my-0" style="border: 1px solid gray;"/><?php } ?>
         </div>
       </div>
     </div>

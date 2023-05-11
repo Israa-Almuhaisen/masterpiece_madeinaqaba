@@ -79,7 +79,7 @@ if($select_all_products->rowCount()>0){
         $insert_new_price = $conn->prepare("UPDATE `products` SET price_discount='$new_price' , is_sale = '1'
                                             WHERE product_id = '$id' ");
         $insert_new_price->execute();
-        header('location:http://localhost/php_project/admin/sales.php');
+        header('location:../admin/sales.php');
     }
 }
 
@@ -97,7 +97,7 @@ if(isset($_POST['remove-all-sales'])){
             $insert_new_price = $conn->prepare("UPDATE `products` SET is_sale = '0'
                                                 WHERE product_id = '$id' ");
             $insert_new_price->execute();
-            header('location:http://localhost/php_project/admin/sales.php');
+            header('location:../admin/sales.php');
         }
     } 
 
@@ -118,7 +118,7 @@ if( isset($_POST['add-sale-on-category'])){
             $insert_new_price = $conn->prepare("UPDATE `products` SET price_discount='$new_price' , is_sale = '1'
                                                 WHERE product_id = '$id' ");
             $insert_new_price->execute();
-            header('location:http://localhost/php_project/admin/sales.php');
+            header('location:../admin/sales.php');
         }
     }
 }
@@ -136,7 +136,7 @@ if( isset($_POST['remove-category-sale'])){
             $insert_new_price = $conn->prepare("UPDATE `products` SET is_sale = '0'
                                                 WHERE product_id = '$id' ");
             $insert_new_price->execute();
-            header('location:http://localhost/php_project/admin/sales.php');
+            header('location:../admin/sales.php');
         }
     }
 }

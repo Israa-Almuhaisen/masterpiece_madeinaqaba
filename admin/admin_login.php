@@ -7,9 +7,11 @@ session_start();
 if(isset($_POST['name']) && isset($_POST['pass'])){
 
    $name = $_POST['name'];
-   $name = filter_var($name, FILTER_SANITIZE_STRING);
-   $pass = sha1($_POST['pass']);
-   $pass = filter_var($pass, FILTER_SANITIZE_STRING);
+   $pass = $_POST['pass'];
+
+//    $name = filter_var($name, FILTER_SANITIZE_STRING);
+//    $pass = sha1($_POST['pass']);
+//    $pass = filter_var($pass, FILTER_SANITIZE_STRING);
 
    $select_admin = $conn->prepare("SELECT * FROM `admins` WHERE name = ? AND password = ?");
    $select_admin->execute([$name, $pass]);
@@ -17,7 +19,7 @@ if(isset($_POST['name']) && isset($_POST['pass'])){
 
    if($select_admin->rowCount() > 0){
       $_SESSION['admin_id'] = $row['id'];
-      header('location:dashboard.php');
+      header('location:admin.php');
    }else{
       $message[] = 'incorrect username or password!';
    }

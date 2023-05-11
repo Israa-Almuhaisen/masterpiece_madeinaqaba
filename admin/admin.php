@@ -27,9 +27,13 @@ if(isset($_POST['new-admin']) && isset($_POST['password-newadmin'])){
 
     $name = $_POST['new-admin'];
     $name = htmlspecialchars($name, ENT_QUOTES);
-    $pass = sha1($_POST['password-newadmin']);
+    // $pass = sha1($_POST['password-newadmin']);
+    $pass = $_POST['password-newadmin'];
+
     $pass = htmlspecialchars($pass, ENT_QUOTES);
-    $cpass = sha1($_POST['co-password-newadmin']);
+    // $cpass = sha1($_POST['co-password-newadmin']);
+    $cpass = $_POST['co-password-newadmin'];
+
     $cpass = htmlspecialchars($cpass, ENT_QUOTES);
  
     $select_admin = $conn->prepare("SELECT * FROM `admins` WHERE name = ?");
@@ -54,19 +58,22 @@ if(isset($_POST['new-admin']) && isset($_POST['password-newadmin'])){
  if(isset($_POST['name']) && isset($_POST['old_pass']) && isset($_POST['new_pass']) && isset($_POST['confirm_pass']) ){
 
     $name = $_POST['name'];
-    $name = filter_var($name, FILTER_SANITIZE_STRING);
+    // $name = filter_var($name, FILTER_SANITIZE_STRING);
  
     $update_profile_name = $conn->prepare("UPDATE `admins` SET name = ? WHERE id = ?");
     $update_profile_name->execute([$name, $admin_id]);
  
     $empty_pass = 'da39a3ee5e6b4b0d3255bfef95601890afd80709';
     $prev_pass = $_POST['prev_pass'];
-    $old_pass = sha1($_POST['old_pass']);
-    $old_pass = filter_var($old_pass, FILTER_SANITIZE_STRING);
-    $new_pass = sha1($_POST['new_pass']);
-    $new_pass = filter_var($new_pass, FILTER_SANITIZE_STRING);
-    $confirm_pass = sha1($_POST['confirm_pass']);
-    $confirm_pass = filter_var($confirm_pass, FILTER_SANITIZE_STRING);
+    // $old_pass = sha1($_POST['old_pass']);
+    $old_pass = $_POST['old_pass'];
+    // $old_pass = filter_var($old_pass, FILTER_SANITIZE_STRING);
+    // $new_pass = sha1($_POST['new_pass']);
+    $new_pass = $_POST['new_pass'];
+    // $new_pass = filter_var($new_pass, FILTER_SANITIZE_STRING);
+    // $confirm_pass = sha1($_POST['confirm_pass']);
+    $confirm_pass = $_POST['confirm_pass'];
+    // $confirm_pass = filter_var($confirm_pass, FILTER_SANITIZE_STRING);
  
     if($old_pass == $empty_pass){
        $message[] = 'please enter old password!';
@@ -245,12 +252,12 @@ if(isset($_POST['new-admin']) && isset($_POST['password-newadmin'])){
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Enter old password</label>
-                                    <input type="text" class="form-control" name="old_pass" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <input type="password" class="form-control" name="old_pass" id="exampleInputEmail1" aria-describedby="emailHelp">
                                     <input type="hidden" name="prev_pass" value="<?= $admin_name['password']; ?>">
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Enter new password</label>
-                                    <input type="text" class="form-control" name="new_pass" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <input type="password" class="form-control" name="new_pass" id="exampleInputEmail1" aria-describedby="emailHelp">
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">Confirm new password</label>

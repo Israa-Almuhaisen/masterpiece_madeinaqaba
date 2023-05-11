@@ -17,7 +17,8 @@ if(isset($_POST['update'])){
    $price = $_POST['price'];
    $details = $_POST['details'];
    $category_data = $_POST['category'];
-   $quantity = $_POST['store'] + $_POST['store_qty'];
+//    $quantity = $_POST['store'] + $_POST['store_qty'];
+$quantity = $_POST['store'];
 
    $update_product = $conn->prepare("UPDATE `products` SET name = ?, price = ?, details = ?, category_id = ?, store = ? WHERE product_id = ?");
    $update_product->execute([$name, $price, $details, $category_data, $quantity, $pid]);
@@ -39,10 +40,10 @@ if(isset($_POST['update'])){
          move_uploaded_file($image_tmp_name, $image_folder);
          unlink('../uploaded_img/'.$old_image);
          $message[] = 'image updated successfully!';
-         header('location:http://localhost/php_project/admin/products.php');
+         header('location:../admin/products.php');
       }
    }
-   header('location:http://localhost/php_project/admin/products.php');
+   header('location:../admin/products.php');
 }
 
 
@@ -202,7 +203,7 @@ if(isset($_POST['update'])){
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">Quantity In Store</label>
-                                    <input type="number" name="store" class="form-control" id="exampleInputPassword1">
+                                    <input type="number" name="store" class="form-control" id="exampleInputPassword1" value="<?= $fetch_products['store']; ?>">
                                 </div>
                                 <div class="mb-3">
                                 <select name="category" placeholder="enter product category" class="box" required maxlength="500" cols="60" rows="10">

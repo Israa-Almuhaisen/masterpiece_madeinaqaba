@@ -45,7 +45,7 @@ include("css/style_israa.css");
                   <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
                <h1>Discover the beauty and creativity of handmade products!</h1>
                <h2>Our handmade marketplace offers a selection of unique items crafted with love and care by artisans,each piece is a work of art, Happy browsing!</h2>
-               <a href="products.php" class="btn">Shop Now</a>
+               <a href="products.php?cat_id=*" class="btn">Shop Now</a>
                </div>
                <!-- <div class="image">
                <img src="images/home1.png" alt="" style="height: 0vh;">
